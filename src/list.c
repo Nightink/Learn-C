@@ -60,8 +60,8 @@ void LinkDel(LinkList *head) {
 
     } else {
 
-        s=p->next;
-        p->next=s->next;
+        s = p->next;
+        p->next = s->next;
         free(s);
     }
 }
@@ -70,7 +70,7 @@ void LinkInsert(LinkList *head) {
 
     LinkList *p;
     LinkList *s;
-    int i,j=0;
+    int i,j = 0;
 
     printf("%s\n", "插入新结点位置:");
     scanf("%d", &i);
@@ -87,8 +87,8 @@ void LinkInsert(LinkList *head) {
         s = (LinkList*) malloc(sizeof(LinkList));
         printf("%s\n", "请输入结点值:");
         scanf("%d", &(s->data));
-        s->next=p->next;
-        p->next=s;
+        s->next = p->next;
+        p->next = s;
     }
 }
 
