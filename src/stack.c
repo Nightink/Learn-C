@@ -1,15 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
+/**
+ * User: Nightink
+ */
 
-typedef struct Node {
+#include "stack.h"
 
-    int data[30];
-    int top;
-} LinkStack;
+// 函数传值是 拷贝传递 在创建内存空间的时候  需要采用指针的指针来处理
+void link_stack_creat(link_stack **s) {
 
-void LinkStack_Cre(LinkStack **s) {
-
-    *s = (LinkStack*) malloc(sizeof(LinkStack));
+    *s = (link_stack*) malloc(sizeof(link_stack));
 
     if(*s) {
 
@@ -22,7 +20,7 @@ void LinkStack_Cre(LinkStack **s) {
     }
 }
 
-void LinkStack_Push(LinkStack *s, int n) {
+void link_stack_push(link_stack *s, int n) {
 
     if(s->top == 29) {
 
@@ -34,7 +32,7 @@ void LinkStack_Push(LinkStack *s, int n) {
     }
 }
 
-int LinkStack_Pop(LinkStack *s) {
+int link_stack_pop(link_stack *s) {
 
     int i;
     if(s->top == -1) {
@@ -49,33 +47,33 @@ int LinkStack_Pop(LinkStack *s) {
     }
 }
 
-void dispaly_1(LinkStack *s) {
+void dispaly_1(link_stack *s) {
 
     for (int i = 0; i < 7; i++) {
 
-        LinkStack_Push(s, i);
-        printf("%d ", LinkStack_Pop(s));
+        link_stack_push(s, i);
+        printf("%d ", link_stack_pop(s));
     }
 
     printf("\n");
 }
 
-void dispaly_2(LinkStack *s) {
+void dispaly_2(link_stack *s) {
 
     for (int i = 0; i < 7; i++) {
 
-        LinkStack_Push(s, i);
+        link_stack_push(s, i);
     }
 
     for (int i = 0; i < 7; i++) {
 
-        printf("%d ", LinkStack_Pop(s));
+        printf("%d ", link_stack_pop(s));
     }
 
     printf("\n");
 }
 
-void freeStack(LinkStack **s) {
+void free_stack(link_stack **s) {
 
     if(*s != NULL) {
 
@@ -87,14 +85,14 @@ void freeStack(LinkStack **s) {
 
 int main(int argc, const char **argv) {
 
-    LinkStack *s = NULL;
+    link_stack *s = NULL;
 
-    LinkStack_Cre(&s);
+    link_stack_creat(&s);
 
     dispaly_1(s);
     dispaly_2(s);
 
-    freeStack(&s);
+    free_stack(&s);
 
     return 0;
 }

@@ -1,16 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
+/**
+ * User: Nightink
+ */
 
-typedef struct Node {
+#include "list.h"
 
-    int data;
-    struct Node* next;
-} LinkList;
-
-void LinkCreat(LinkList *head) {
+void link_creat(link_list *head) {
 
     int n; 
-    LinkList *r, *p;
+    link_list *r, *p;
 
     r = head;
     printf("%s\n", "请输入结点个数:");
@@ -19,7 +16,7 @@ void LinkCreat(LinkList *head) {
 
     for(int i=0; i<n; i++) {
 
-        p = (LinkList*) malloc(sizeof(LinkList));
+        p = (link_list*) malloc(sizeof(link_list));
         scanf("%d", &(p->data));
         r->next = p; 
         r = p;
@@ -27,9 +24,9 @@ void LinkCreat(LinkList *head) {
     r->next = NULL;  
 }
 
-void LinkDisplay(LinkList *head) {
+void link_display(link_list *head) {
 
-    LinkList *p; 
+    link_list *p; 
     p = head->next; 
 
     printf("%s\n", "显示列表结点:");
@@ -41,9 +38,9 @@ void LinkDisplay(LinkList *head) {
     printf("\n");
 }
 
-void LinkDel(LinkList *head) {
+void link_del(link_list *head) {
 
-    LinkList *p, *s;
+    link_list *p, *s;
     int i,j = 1;
     printf("%s\n", "输入删除位置:");
     scanf("%d", &i);
@@ -62,15 +59,14 @@ void LinkDel(LinkList *head) {
 
         s = p->next;
         p->next = s->next;
-        free(s);
+        free_stack(&s);
     }
 }
 
-void LinkInsert(LinkList *head) {
+void link_insert(link_list *head) {
 
-    LinkList *p;
-    LinkList *s;
-    int i,j = 0;
+    link_list *p, *s;
+    int i, j = 0;
 
     printf("%s\n", "插入新结点位置:");
     scanf("%d", &i);
@@ -84,7 +80,7 @@ void LinkInsert(LinkList *head) {
         printf("%s\n", "插入结点找不到.");
     } else {
 
-        s = (LinkList*) malloc(sizeof(LinkList));
+        s = (link_list*) malloc(sizeof(link_list));
         printf("%s\n", "请输入结点值:");
         scanf("%d", &(s->data));
         s->next = p->next;
@@ -92,19 +88,32 @@ void LinkInsert(LinkList *head) {
     }
 }
 
+void free_stack(link_list **s) {
+
+    if(*s != NULL) {
+
+        printf("%s\n", "内存释放成功");
+        free(*s);
+        *s = NULL;
+    }
+}
+
 int main(int argc, const char **argv) {
 
-    LinkList head;
+    link_list *head = (link_list*) malloc(sizeof(link_list));
 
     // 创建链表
-    LinkCreat(&head);
-    LinkDisplay(&head);
+    link_creat(head);
+    link_display(head);
     // 删除链表结点
-    LinkDel(&head);
-    LinkDisplay(&head);
+    link_del(head);
+    link_display(head);
     // 添加链表结点
-    LinkInsert(&head);
-    LinkDisplay(&head);
+    link_insert(head);
+    link_display(head);
+
+    // 释放内存
+    free_stack(&head);
 
     return 0;
 }
