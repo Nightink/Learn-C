@@ -4,10 +4,10 @@
 
 #include "list.h"
 
-void link_creat(link_list *head) {
+void node_creat(node *head) {
 
     int n; 
-    link_list *r, *p;
+    node *r, *p;
 
     r = head;
     printf("%s\n", "请输入结点个数:");
@@ -16,7 +16,7 @@ void link_creat(link_list *head) {
 
     for(int i=0; i<n; i++) {
 
-        p = (link_list*) malloc(sizeof(link_list));
+        p = (node*) malloc(sizeof(node));
         scanf("%d", &(p->data));
         r->next = p; 
         r = p;
@@ -24,9 +24,9 @@ void link_creat(link_list *head) {
     r->next = NULL;  
 }
 
-void link_display(link_list *head) {
+void node_display(node *head) {
 
-    link_list *p; 
+    node *p; 
     p = head->next; 
 
     printf("%s\n", "显示列表结点:");
@@ -38,9 +38,9 @@ void link_display(link_list *head) {
     printf("\n");
 }
 
-void link_del(link_list *head) {
+void node_del(node *head) {
 
-    link_list *p, *s;
+    node *p, *s;
     int i,j = 1;
     printf("%s\n", "输入删除位置:");
     scanf("%d", &i);
@@ -63,13 +63,11 @@ void link_del(link_list *head) {
     }
 }
 
-void link_insert(link_list *head) {
+void node_insert(node *head, int i, int data) {
 
-    link_list *p, *s;
-    int i, j = 0;
+    node *p, *s;
+    int j = 0;
 
-    printf("%s\n", "插入新结点位置:");
-    scanf("%d", &i);
     p = head;
     while(p && j < i-1) {
         p = p->next;
@@ -80,15 +78,14 @@ void link_insert(link_list *head) {
         printf("%s\n", "插入结点找不到.");
     } else {
 
-        s = (link_list*) malloc(sizeof(link_list));
-        printf("%s\n", "请输入结点值:");
-        scanf("%d", &(s->data));
+        s = (node*) malloc(sizeof(node));
+        s->data = data;
         s->next = p->next;
         p->next = s;
     }
 }
 
-void free_stack(link_list **s) {
+void free_stack(node **s) {
 
     if(*s != NULL) {
 
@@ -98,22 +95,30 @@ void free_stack(link_list **s) {
     }
 }
 
-int main(int argc, const char **argv) {
+// int main(int argc, const char **argv) {
 
-    link_list *head = (link_list*) malloc(sizeof(link_list));
+//     int i, j;
+//     node *head = (node*) malloc(sizeof(node));
 
-    // 创建链表
-    link_creat(head);
-    link_display(head);
-    // 删除链表结点
-    link_del(head);
-    link_display(head);
-    // 添加链表结点
-    link_insert(head);
-    link_display(head);
+//     // 创建链表
+//     node_creat(head);
+//     node_display(head);
+//     // 删除链表结点
+//     node_del(head);
+//     node_display(head);
+//     // 添加链表结点
 
-    // 释放内存
-    free_stack(&head);
+//     printf("%s\n", "插入新结点位置:");
+//     scanf("%d", &i);
 
-    return 0;
-}
+//     printf("%s\n", "插入值:");
+//     scanf("%d", &j);
+
+//     node_insert(head, i, j);
+//     node_display(head);
+
+//     // 释放内存
+//     free_stack(&head);
+
+//     return 0;
+// }

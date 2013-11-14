@@ -8,23 +8,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node {
+typedef struct _node {
 
     int data;
-    struct node* next;
-} link_list;
+    struct _node* next;
+} node;
 
 // 创建链表
-void link_creat(link_list *head);
-void link_display(link_list *head);
+void node_creat(node *head);
+void node_display(node *head);
 // 删除链表结点
-void link_del(link_list *head);
-void link_display(link_list *head);
+void node_del(node *head);
+void node_display(node *head);
 // 添加链表结点
-void link_insert(link_list *head);
-void link_display(link_list *head);
+void node_insert(node *head, int i, int data);
+void node_display(node *head);
 
 // 释放内存
-void free_stack(link_list **s);
+void free_stack(node **s);
 
 #endif
