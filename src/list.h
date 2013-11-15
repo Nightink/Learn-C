@@ -19,7 +19,7 @@ void node_creat(node *head);
 // 删除链表结点
 node* node_del(node *head, int i);
 // 添加链表结点
-void node_insert(node *head, int i, int data);
+node* node_insert(node *head, int i, int data);
 
 void node_display(node *head);
 // 释放内存

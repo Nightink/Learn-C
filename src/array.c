@@ -12,8 +12,9 @@ void array_push(array *head, int n) {
         head->element = (node*) malloc(sizeof(node));
     }
 
-    node_insert(head->element, head->length, n);
-    head->length++;
+    if(node_insert(head->element, head->length, n)) {
+        head->length++;
+    }
 }
 
 node* array_pop(array *head) {

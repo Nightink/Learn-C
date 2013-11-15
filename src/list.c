@@ -63,26 +63,29 @@ node* node_del(node *head, int i) {
     }
 }
 
-void node_insert(node *head, int i, int data) {
+node* node_insert(node *head, int i, int data) {
 
     node *p, *s;
     int j = 0;
 
+    printf("%d %d %d\n", data, i, head->data);
     p = head;
-    while(p && j < i-1) {
+    while(p && j < i) {
         p = p->next;
         j++;
     }
 
-    if(p == NULL) {
-        printf("%s\n", "插入结点找不到.");
-    } else {
+    if(p != NULL) {
 
         s = (node*) malloc(sizeof(node));
         s->data = data;
         s->next = p->next;
         p->next = s;
     }
+
+    printf("%d\n", p->data);
+
+    return s;
 }
 
 void free_stack(node **s) {
