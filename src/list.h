@@ -16,14 +16,12 @@ typedef struct _node {
 
 // 创建链表
 void node_creat(node *head);
-void node_display(node *head);
 // 删除链表结点
-void node_del(node *head);
-void node_display(node *head);
+node* node_del(node *head, int i);
 // 添加链表结点
 void node_insert(node *head, int i, int data);
-void node_display(node *head);
 
+void node_display(node *head);
 // 释放内存
 void free_stack(node **s);
 

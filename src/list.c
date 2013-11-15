@@ -38,12 +38,11 @@ void node_display(node *head) {
     printf("\n");
 }
 
-void node_del(node *head) {
+node* node_del(node *head, int i) {
 
     node *p, *s;
-    int i,j = 1;
-    printf("%s\n", "输入删除位置:");
-    scanf("%d", &i);
+    int j = 1;
+
     p = head;
 
     while(p && j < i) {
@@ -53,13 +52,14 @@ void node_del(node *head) {
 
     if(p == NULL || p->next == NULL) {
 
-        printf("%s\n", "删除结点找不到.");
+        return NULL;
 
     } else {
 
         s = p->next;
         p->next = s->next;
-        free_stack(&s);
+        
+        return s;
     }
 }
 

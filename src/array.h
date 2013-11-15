@@ -13,14 +13,18 @@
 typedef struct _array {
 
     node *element;
-    int top;
+    int length;
 } array;
+
+typedef void (*pf)(node*);
 
 // 添加数值
 void array_push(array *s, int n);
+// 弹出值
+node* array_pop(array *head);
 
 // 遍历数据
-void array_each(array *s);
+void array_each(array *s, pf);
 
 // 释放内存
 // void free_array(array **a);
