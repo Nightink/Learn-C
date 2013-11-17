@@ -68,7 +68,6 @@ node* node_insert(node *head, int i, int data) {
     node *p, *s;
     int j = 0;
 
-    printf("%d %d %d\n", data, i, head->data);
     p = head;
     while(p && j < i) {
         p = p->next;
@@ -82,8 +81,6 @@ node* node_insert(node *head, int i, int data) {
         s->next = p->next;
         p->next = s;
     }
-
-    printf("%d\n", p->data);
 
     return s;
 }

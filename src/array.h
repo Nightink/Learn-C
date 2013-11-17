@@ -19,12 +19,14 @@ typedef struct _array {
 typedef void (*pf)(node*);
 
 // 添加数值
-void array_push(array *s, int n);
+void array_push(array *head, int n);
+void array_unshift(array *head, int n);
 // 弹出值
 node* array_pop(array *head);
+node* array_shift(array *head);
 
 // 遍历数据
-void array_each(array *s, pf);
+void array_each(array *head, pf);
 
 // 释放内存
 // void free_array(array **a);

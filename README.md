@@ -12,4 +12,5 @@
     * `array push`函数 
     * `array pop` 
     * `array forEach` 添加回调方法
+    * `array unshift shift` 方法
     * 学习函数指针
