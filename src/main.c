@@ -1,3 +1,7 @@
+/**
+ * User: Nightink
+ */
+
 #include "array.h"
 
 void echo_node(node* n) {
@@ -26,14 +30,20 @@ int main(int argc, const char **argv) {
 
     el = array_shift(arr);
     printf("array shift function data is %d.\n", el->data);
+    // _free(el);
+    free_node(&el);
 
     el = array_pop(arr);
     printf("array pop function data is %d.\n", el->data);
+    free_node(&el);
     el = array_pop(arr);
     printf("array pop function data is %d.\n", el->data);
+    free_node(&el);
 
     array_each(arr, echo_node);
     printf("\narray length is %d.\n", arr->length);
+
+    free_array(&arr);
 
     return 0;
 }

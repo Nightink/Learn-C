@@ -1,3 +1,7 @@
+/**
+ * User: Nightink
+ */
+
 #include "array.h"
 
 void array_push(array *head, int n) {
@@ -79,12 +83,24 @@ void array_each(array *head, pf cb) {
         return;
     }
 
-    node *temp = head->element->next;
+    node *next = head->element->next;
+    node *temp;
 
     for (int i = 0; i < head->length; ++i) {
         
         // printf("%d ", temp->data);
+        temp = next;
+        next = temp->next;
         cb(temp);
-        temp = temp->next;
     }
+}
+
+void _free(node* n) {
+
+    free_node(&n);
+}
+
+void free_array(array **head) {
+
+    array_each(*head, _free);
 }

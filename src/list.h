@@ -23,6 +23,6 @@ node* node_insert(node *head, int i, int data);
 
 void node_display(node *head);
 // 释放内存
-void free_stack(node **s);
+void free_node(node **s);
 
 #endif

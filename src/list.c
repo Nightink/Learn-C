@@ -85,7 +85,7 @@ node* node_insert(node *head, int i, int data) {
     return s;
 }
 
-void free_stack(node **s) {
+void free_node(node **s) {
 
     if(*s != NULL) {
 

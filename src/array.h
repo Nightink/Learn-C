@@ -29,7 +29,6 @@ node* array_shift(array *head);
 void array_each(array *head, pf);
 
 // 释放内存
-// void free_array(array **a);
-// void free_node(node **n);
+void free_array(array **head);
 
 #endif
